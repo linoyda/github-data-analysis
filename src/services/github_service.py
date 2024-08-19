@@ -1,7 +1,22 @@
 import logging
 
 from github import Github
-from main import REPOSITORY_NAME
+
+REPOSITORY_NAME = "CTFd"
+
+def check_if_branch_merged(token, branch_name, repo=None):
+    """Given a branch name, check if it was merged to master"""
+    if repo is None:
+        repo = get_repo_from_token(token)
+    
+    # List all pull requests with the given branch name and check if it is merged
+    pulls = repo.get_pulls(state='closed', base='master')
+    
+    for pr in pulls:
+        if pr.head.ref == branch_name and pr.merged:
+            return True
+    
+    return False
 
 def get_repo_from_token(token):
     """Get user details based on provided token"""
@@ -11,7 +26,8 @@ def get_repo_from_token(token):
         
         logging.debug(f"Trying to get repo with token of user: {user.login}, {user.name}, {user.email}...")
 
-        return g.get_repo(f"{user.login}/{REPOSITORY_NAME}")
+        # return g.get_repo(f"{user.login}/{REPOSITORY_NAME}")
+        return g.get_repo(f"{REPOSITORY_NAME}/{REPOSITORY_NAME}")
     except Exception as e:
         logging.error(f"Failed to get repo from provided token: {str(e)}")
         return None
@@ -28,8 +44,8 @@ def get_github_data(token):
 
         # Get latest 3 releases, if their amount is larger than 2
         releases = repo.get_releases()
-        if len(releases) < 3:
-            logging.error(f"Repository {REPOSITORY_NAME} has less than 3 releases.")
+        if releases.totalCount < 3:
+            logging.warning(f"Repository {REPOSITORY_NAME} has less than 3 releases.")
         else:
             releases = releases[:3]
         

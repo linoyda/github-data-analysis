@@ -5,14 +5,13 @@ from config.argparse import setup_arguments
 from services.github_service import get_github_data
 from services.graph_service import create_commit_graph
 
-REPOSITORY_NAME = "CTFd"
 
 def main():
     """Driver function logic for collecting repository data and creating a graph for a given branch"""
     try:
         args = setup_arguments()
         setup_logging(args.log_to_file, args.debug)
-        
+
         logging.info("Extracting GitHub data...")
 
         data = get_github_data(args.token)
