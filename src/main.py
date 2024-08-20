@@ -3,7 +3,7 @@ import logging
 from config.logger import setup_logging
 from config.argparse import setup_arguments
 from services.github_service import get_github_data
-from services.graph_service import create_commit_graph
+from services.graph_service import create_branch_graph_from_github, create_commit_graph
 
 
 def main():
@@ -32,7 +32,8 @@ def main():
             logging.info(f"{user}: {pr_count} PRs")
 
         logging.info(f"Creating commit graph for branch {args.branch}...")
-        create_commit_graph(args.token, args.branch)
+        
+        create_branch_graph_from_github(args.token, args.branch)
 
     except Exception as e:
         logging.critical(f"Exception occurred: {str(e)}")
