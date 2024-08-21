@@ -18,8 +18,6 @@ This project is a Python-based tool that uses the GitHub API to analyze data fro
 2. [PyGithub](https://github.com/PyGithub/PyGithub) library for GitHub API access
 3. [pydot](https://github.com/pydot/pydot) and [graphviz](https://graphviz.org/download/) libraries for graph generation
 4. A valid GitHub personal access token
-5. [argparse](https://docs.python.org/3/library/argparse.html)
-6. [logging](https://docs.python.org/3/library/logging.html)
 
 ## Usage
 ### Running the Script
@@ -40,3 +38,11 @@ To run the script, use the following command:
 After running the script, the graph will be saved as a ```.dot``` file named after the branch (e.g., {branch_name}_commit_graph.dot). You can visualize the graph using Graphviz:
 
 ```dot -Tpng {branch_name}_commit_graph.dot -o OUTPUT_FILE_NAME.png```
+
+
+## Code Structure
+ * **main.py**: The main entry point, calling the relevant functions.
+ * **logger.py**: Contains the logging setup logic, allowing for logging to either a file or stdout.
+ * **argparse.py**: Contains the argument parsing logic.
+ * **github_service.py**: Handles the extraction from GitHub API, retrieving repository statistics and commits.
+ * **graph_service.py**: Responsible for generating the commit graph based on the data retrieved from the GitHub API.

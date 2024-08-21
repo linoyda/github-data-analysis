@@ -1,0 +1,11 @@
+Metadata-Version: 2.1
+Name: github_data_analysis
+Version: 0.1.0
+Summary: A Python package for GitHub data analysis and commit graph creation
+Home-page: https://github.com/linoyda/github-data-analysis
+Author: Linoy Davari
+Author-email: linoydavari1997@gmail.com
+Requires-Python: >=3.6
+Requires-Dist: PyGithub
+Requires-Dist: pydot
+Requires-Dist: graphviz

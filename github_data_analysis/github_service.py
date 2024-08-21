@@ -4,20 +4,6 @@ from github import Github
 
 REPOSITORY_NAME = "CTFd"
 
-def check_if_branch_merged(token, branch_name, repo=None):
-    """Given a branch name, check if it was merged to master"""
-    if repo is None:
-        repo = get_repo_from_token(token)
-    
-    # List all pull requests with the given branch name and check if it is merged
-    pulls = repo.get_pulls(state='closed', base='master')
-    
-    for pr in pulls:
-        if pr.head.ref == branch_name and pr.merged:
-            return True
-    
-    return False
-
 def get_repo_from_token(token):
     """Get user details based on provided token"""
     try:

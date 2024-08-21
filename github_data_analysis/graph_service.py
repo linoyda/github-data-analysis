@@ -1,7 +1,7 @@
 import pydot
 import logging
 
-from services.github_service import get_repo_from_token, check_if_branch_merged
+from github_data_analysis.github_service import get_repo_from_token
 
 def create_branch_graph_from_github(token, branch_name):
     """Given a Github token and a branch name, fetch its prs, and create a graph based on its commits."""

@@ -1,9 +1,9 @@
 import logging
 
-from config.logger import setup_logging
-from config.argparse import setup_arguments
-from services.github_service import get_github_data
-from services.graph_service import create_branch_graph_from_github
+from github_data_analysis.logger import setup_logging
+from github_data_analysis.argparse import setup_arguments
+from github_data_analysis.github_service import get_github_data
+from github_data_analysis.graph_service import create_branch_graph_from_github
 
 
 def main():
