@@ -3,11 +3,11 @@ import logging
 from config.logger import setup_logging
 from config.argparse import setup_arguments
 from services.github_service import get_github_data
-from services.graph_service import create_branch_graph_from_github, create_commit_graph
+from services.graph_service import create_branch_graph_from_github
 
 
 def main():
-    """Driver function logic for collecting repository data and creating a graph for a given branch"""
+    """Driver logic for collecting repository data and creating a graph for a given branch"""
     try:
         args = setup_arguments()
         setup_logging(args.log_to_file, args.debug)

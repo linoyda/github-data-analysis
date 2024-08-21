@@ -1,0 +1,33 @@
+digraph G {
+	graph [bb="0,0,721.6,509.99"];
+	node [label="\N"];
+	"46cf051\nMark 3.7.3"	[fillcolor=lightblue,
+		height=1.5222,
+		pos="319.8,361.21",
+		shape=circle,
+		style=filled,
+		width=1.5222];
+	"9ae1a10\nAdd changelog date"	[fillcolor=lightblue,
+		height=2.4503,
+		pos="302.8,182.19",
+		shape=circle,
+		style=filled,
+		width=2.4503];
+	"46cf051\nMark 3.7.3" -> "9ae1a10\nAdd changelog date"	[pos="e,311.17,270.29 314.65,306.62 313.89,298.62 313.08,290.17 312.25,281.6"];
+	"8ef0cdd\nMark 3.7.3 (#2576)"	[fillcolor=lightgreen,
+		height=0.80532,
+		pos="360.8,28.991",
+		shape=ellipse,
+		style=filled,
+		width=2.4356];
+	"9ae1a10\nAdd changelog date" -> "8ef0cdd\nMark 3.7.3 (#2576)"	[pos="e,350.05,58.025 334.18,99.397 338.28,88.695 342.32,78.159 345.97,68.655"];
+	"bbe1fce\nFix Display Error When Website Language is Set to Traditional Chinese (zh_TW) (#2447)"	[fillcolor=pink,
+		height=0.80532,
+		pos="360.8,481",
+		shape=ellipse,
+		style=filled,
+		width=10.022];
+	"bbe1fce\nFix Display Error When Website Language is Set to Traditional Chinese (zh_TW) (#2447)" -> "46cf051\nMark 3.7.3"	[pos="e,337.56,413.23 350.98,451.78 348.02,443.29 344.65,433.61 341.25,423.83"];
+	"bbe1fce\nFix Display Error When Website Language is Set to Traditional Chinese (zh_TW) (#2447)" -> "8ef0cdd\nMark 3.7.3 (#2576)"	[pos="e,382.06,57.416 372.57,451.76 376.72,440.77 381.04,427.97 383.8,416.01 416.09,276.39 438.53,231.95 399.8,93.983 397.2,84.71 392.84,\
+75.448 387.96,66.967"];
+}
