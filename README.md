@@ -34,6 +34,10 @@ To run the script, use the following command:
 
 ```python main.py --token="ghp_yourtoken" --branch="feature-branch" --log-to-file --debug```
 
+#### Debugging with VSCODE
+
+Note the ```.vscode\launch.json``` file included, which contains general debugging configuration. Change the arguments, and specifically the token or branch as desired.
+
 ### Viewing the Graph
 After running the script, the graph will be saved as a ```.dot``` file named after the branch (e.g., {branch_name}_commit_graph.dot). You can visualize the graph using Graphviz:
 
