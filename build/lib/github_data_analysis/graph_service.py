@@ -29,6 +29,12 @@ def create_branch_graph_from_github(token, branch_name):
         common_ancestor_sha = comparison.merge_base_commit.sha
         common_ancestor_message = comparison.merge_base_commit.commit.message.splitlines()[0]
 
+        if (not common_ancestor_sha or not common_ancestor_message):
+            logging.error("Common ancestor commit could not be fetched.")
+            return
+
+        logging.debug(f"Common ancestor commit sha: {common_ancestor_sha}, message: {common_ancestor_message}")
+
         graph = pydot.Dot(graph_type="digraph")
 
         for pr in branch_prs:
@@ -56,7 +62,10 @@ def create_branch_graph_from_github(token, branch_name):
             
             # Retrieve and add the merge commit node
             pr_merge_commit_sha = pr.merge_commit_sha
+
             if pr_merge_commit_sha:
+                logging.debug(f"Merge commit sha: {pr_merge_commit_sha}")
+
                 try:
                     merge_commit = repo.get_commit(pr_merge_commit_sha)
                     merge_node = pydot.Node(f"{merge_commit.sha[:7]}\n{merge_commit.commit.message.splitlines()[0]}",
@@ -71,6 +80,7 @@ def create_branch_graph_from_github(token, branch_name):
                     logging.error(f"Failed to fetch merge commit details for SHA {pr_merge_commit_sha}: {e}")
 
         graph.write_dot(f"{branch_name}_commit_graph.dot")
+        logging.debug(f"Done writing graph to .dot file")
     
     except Exception as e:
         logging.error(f"Failed to create commit graph")
